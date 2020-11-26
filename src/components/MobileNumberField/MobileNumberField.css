@@ -1,0 +1,4 @@
+/* overwriting default css */
+.MuiInputBase-root.MuiOutlinedInput-root {
+	border-radius: 20px !important;
+}
