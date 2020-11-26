@@ -20,7 +20,6 @@ import { Icon } from "semantic-ui-react";
 import MobileNumberField from "../components/MobileNumberField/MobileNumberField";
 import PassField from "../components/PassField/PassField";
 import styled from "styled-components";
-import { FilterNoneRounded } from "@material-ui/icons";
 
 // for the styles and themes
 const useStyles = makeStyles((theme) => ({
@@ -131,18 +130,18 @@ export default function SignupNumber() {
 						}
 						return emp, err;
 					}}
-					onSubmit={(values, { setSubmitting }) => {
-						setTimeout(() => {
-							alert(JSON.stringify(values, null, 2));
-							setSubmitting(false);
-						}, 400);
-					}}
+					// onSubmit={(values, { setSubmitting }) => {
+					// 	setTimeout(() => {
+					// 		// alert(JSON.stringify(values, null, 2));
+					// 		setSubmitting(false);
+					// 	});
+					// }}
 				>
 					{({
 						handleSubmit,
 						isSubmitting,
 					}) => (
-						<form onSubmit={handleSubmit}>
+						<form>
 							<Typography
 								component="p"
 								variant="h6"
@@ -163,48 +162,48 @@ export default function SignupNumber() {
 								We recommend you choose a password which entails an uppercase
 								letter, a symbol, and a number.
 							</Typography>
-							<Button
-								style={{ color: "#BB5E34", borderRadius: 50, height: "50px" }}
-								type="submit"
-								fullWidth
-								variant="contained"
-								color="#4183c4 !important"
-								className={classes.submit}
-								disabled={disableButton || isSubmitting} // || isSubmitting
-							>
-								{/* VerifySignupNumberPage */}
-								<Link href="/VerifySignupNumberPage">
-									<b>
-										<a style={{ textDecoration: "none", color: "inherit" }}>
-											Continue
-										</a>
-									</b>
-								</Link>
-							</Button>
+							<Link href="/VerifySignupNumberPage">
+                                <Button
+                                    style={{ color: "#BB5E34", borderRadius: 50, height: "50px" }}
+                                    fullWidth
+                                    variant="contained"
+                                    className={classes.submit}
+									disabled={disableButton}
+									onClick={(e) => {
+										console.log("mantep");
+									}}
+                                >
+                                    <b>
+                                        <a style={{ textDecoration: "none", color: "inherit" }}>
+                                            Continue
+                                        </a>
+                                    </b>
+                                </Button>
+                            </Link>
 						</form>
 					)}
 				</Formik>
 				<div>
-					<Button
-						style={{
-							borderRadius: 50,
-							height: "50px",
-							color: "#4183c4 !important",
-						}}
-						type="submit"
-						fullWidth
-						variant="contained"
-						className={classes.change}
+					<Link
+						href="/SignupEmailPage"
+						style={{ color: "rgb(0, 103, 179) !important" }}
 					>
-						<Link
-							href="/SignupEmailPage"
-							style={{ color: "rgb(0, 103, 179) !important" }}
+						<Button
+							style={{
+								borderRadius: 50,
+								height: "50px",
+								color: "#4183c4 !important",
+							}}
+							type="submit"
+							fullWidth
+							variant="contained"
+							className={classes.change}
 						>
 							<BlueLink>
-								<b>Sign Up with Email</b>
-							</BlueLink>
-						</Link>
-					</Button>
+									<b>Sign Up with Email</b>
+								</BlueLink>
+						</Button>
+					</Link>
 				</div>
 				<Box m={3}>
 					<Typography component="p" variant="h6" color="primary" align="center">

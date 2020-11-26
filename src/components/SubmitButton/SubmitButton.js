@@ -28,12 +28,6 @@ export default function SubmitButton() {
 				className={classes.form}
 				color="primary"
 				initialValues={{ number: "", password: "" }}
-				onSubmit={(values, { setSubmitting }) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-						setSubmitting(false);
-					}, 400);
-				}}
 			>
 				{({ isSubmitting, handleSubmit }) => (
 					<form onSubmit={handleSubmit}>

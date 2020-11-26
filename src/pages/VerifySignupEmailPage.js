@@ -13,8 +13,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { colors } from "@material-ui/core";
-import OTPField from "../components/OTPField/OTPField";
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -91,7 +89,6 @@ export default function SignupVerify() {
 			</AppBar>
 			<div className={classes.paper}>
 				{/* this is the component used for input the OTP*/}
-				<OTPField />
 				<Formik
 					className={classes.form}
 					color="primary"
@@ -117,6 +114,11 @@ export default function SignupVerify() {
 					}}
 				>
 					{({
+						values,
+						errors,
+						touched,
+						handleChange,
+						handleBlur,
 						handleSubmit,
 						isSubmitting,
 					}) => (
@@ -130,6 +132,41 @@ export default function SignupVerify() {
 								Please verify email address by entering code sent to you via
 								email.
 							</Typography>
+							<TextField
+								className={classes.textField}
+								type="text"
+								variant="outlined"
+								margin="normal"
+								required
+								fullWidth
+								id="otp"
+								label="OTP"
+								name="otp"
+								autoComplete="otp"
+								autoFocus
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={
+									values.otp
+										? values.otp
+												.split("")
+												.filter((val) => /[0-9]$/.test(parseInt(val)))
+												.join("") && values.otp.slice(0,6) 
+										: ""
+									}
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end">
+											{!err && !emp ? (
+												<CheckCircleIcon htmlColor="rgb(76, 175, 80)" />
+											) : (
+												<div></div>
+											)}
+										</InputAdornment>
+									),
+								}}
+							/>
+							{errors.otp && touched.otp && errors.otp}
 							<Button
 								style={{ color: "#BB5E34", borderRadius: 50, height: "50px" }}
 								type="submit"

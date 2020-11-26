@@ -79,12 +79,12 @@ export default function MobileNumberField() {
 					}
 					return emp, err;
 				}}
-				onSubmit={(values, { setSubmitting }) => {
-					setTimeout(() => {
-						alert(JSON.stringify(values, null, 2));
-						setSubmitting(false);
-					}, 400);
-				}}
+				// onSubmit={(values, { setSubmitting }) => {
+				// 	setTimeout(() => {
+				// 		// alert(JSON.stringify(values, null, 2));
+				// 		setSubmitting(false);
+				// 	});
+				// }}
 			>
 				{({
 					values,
@@ -94,7 +94,7 @@ export default function MobileNumberField() {
 					handleBlur,
 					handleSubmit,
 				}) => (
-					<form onSubmit={handleSubmit}>
+					<form>
 						<TextField
 							className={classes.textField}
 							// style={{ borderRadius: 20 }}

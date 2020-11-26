@@ -136,16 +136,16 @@ export default function SignupEmail() {
 						}
 						return emp, err;
 					}}
-					onSubmit={(values, { setSubmitting }) => {
-						setTimeout(() => {
-							alert(JSON.stringify(values, null, 2));
-							setSubmitting(false);
-						}, 400);
-					}}
+					// onSubmit={(values, { setSubmitting }) => {
+					// 	setTimeout(() => {
+					// 		// alert(JSON.stringify(values, null, 2));
+					// 		setSubmitting(false);
+					// 	}, 400);
+					// }}
 				>
 					{({
 						handleSubmit,
-						isSubmitting,
+						isSubmitting
 					}) => (
 						<form onSubmit={handleSubmit}>
 							<Typography
@@ -168,48 +168,48 @@ export default function SignupEmail() {
 								We recommend you choose a password which entails an uppercase
 								letter, a symbol, and a number.
 							</Typography>
-							<Button
-								style={{ color: "#BB5E34", borderRadius: 50, height: "50px" }}
-								type="submit"
-								fullWidth
-								variant="contained"
-								color="#4183c4 !important"
-								className={classes.submit}
-								disabled={disableButton || isSubmitting}
-							>
-								{/* VerifySignupEmailPage */}
-								<Link href="/VerifySignupEmailPage">
-									<b>
-										<a style={{ textDecoration: "none", color: "inherit" }}>
-											Continue
-										</a>
-									</b>
-								</Link>
-							</Button>
+							<Link href="/VerifySignupEmailPage">
+                                <Button
+                                    style={{ color: "#BB5E34", borderRadius: 50, height: "50px" }}
+                                    fullWidth
+                                    variant="contained"
+                                    className={classes.submit}
+									disabled={disableButton}
+									onClick={(e) => {
+										console.log("mantep");
+									}}
+                                >
+                                    <b>
+                                        <a style={{ textDecoration: "none", color: "inherit" }}>
+                                            Continue
+                                        </a>
+                                    </b>
+                                </Button>
+                            </Link>
 						</form>
 					)}
 				</Formik>
 				<div>
-					<Button
-						style={{
-							borderRadius: 50,
-							height: "50px",
-							color: "primary",
-						}}
-						type="submit"
-						fullWidth
-						variant="contained"
-						className={classes.change}
+				<Link
+						href="/SignupNumberPage"
+						style={{ color: "rgb(0, 103, 179) !important" }}
 					>
-						<Link 
-							href="/SignupNumberPage"
-							style={{ color: "rgb(0, 103, 179) !important" }}
+						<Button
+							style={{
+								borderRadius: 50,
+								height: "50px",
+								color: "#4183c4 !important",
+							}}
+							type="submit"
+							fullWidth
+							variant="contained"
+							className={classes.change}
 						>
 							<BlueLink>
-								<b>Sign Up with Mobile Number</b>
-							</BlueLink>
-						</Link>
-					</Button>
+									<b>Sign Up with Mobile Number</b>
+								</BlueLink>
+						</Button>
+					</Link>
 				</div>
 				<Box m={3}>
 					<Typography component="p" variant="h6" color="primary" align="center">
