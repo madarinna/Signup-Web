@@ -170,7 +170,7 @@ export default function SignupNumber() {
                                     className={classes.submit}
 									disabled={disableButton}
 									onClick={(e) => {
-										console.log("mantep");
+										console.log("click");
 									}}
                                 >
                                     <b>

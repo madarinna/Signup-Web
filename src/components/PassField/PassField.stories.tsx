@@ -7,9 +7,9 @@ export default {
   component: PassField
 } as Meta;
 
-export const Overview = () => <PassField />;
+export const Overview = () => <PassField setDisableButton={console.log("password")} />;
 Overview.args = {
-  value: "secret123",
+  value: "ABCabc123!",
   label: "pass",
 };
 Overview.argTypes = {
